@@ -47,7 +47,7 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
 
     return (
         <>
-            <div className={`modal ${isModalOpen ? 'open' : ''}`} onClick={(e) => {
+            <div className={`modal modal-overlay ${isModalOpen ? 'open' : ''}`} onClick={(e) => {
                 e.stopPropagation();
                 setIsModalOpen(false)
             }}>
@@ -66,7 +66,7 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
                     </form>
                 </div>
             </div>
-            <div className={`modal-overlay ${isModalOpen ? 'open' : ''}`} onClick={() => setIsModalOpen(false)} />
+           
         </>
     );
 }
