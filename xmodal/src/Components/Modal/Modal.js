@@ -47,7 +47,10 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
 
     return (
         <>
-            <div className={`modal ${isModalOpen ? 'open' : ''}`} onClick={() => setIsModalOpen(false)}>
+            <div className={`modal ${isModalOpen ? 'open' : ''}`} onClick={(e) => {
+                e.stopPropagation();
+                setIsModalOpen(false)
+            }}>
                 <div className="modal-content" onClick={handleModalClick}>
                     <h2>Fill details</h2>
                     <form onSubmit={handleSubmit}>
