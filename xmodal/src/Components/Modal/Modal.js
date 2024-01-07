@@ -23,10 +23,6 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
             return;
         }
 
-        setUsername('');
-        setEmail('');
-        setPhone('');
-        setDob('');
         setIsModalOpen(false);
     };
 
@@ -52,7 +48,6 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
     return (
         <>
             <div className={`modal ${isModalOpen ? 'open' : ''}`} onClick={() => setIsModalOpen(false)}>
-
                 <div className="modal-content" onClick={handleModalClick}>
                     <h2>Fill details</h2>
                     <form onSubmit={handleSubmit}>
@@ -64,7 +59,7 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
                         <input onChange={handlePhoneNumberChange} id='phone' name='phone' value={phone} required />
                         <label htmlFor='dob'><strong>Date of Birth:</strong></label>
                         <input onChange={(e) => setDob(e.target.value)} id='dob' name='dob' type='date' value={dob} required />
-                        <input type='submit' value='Submit' className='submit-button' />
+                        <button type='submit' className='submit-button'>Submit</button>
                     </form>
                 </div>
             </div>
