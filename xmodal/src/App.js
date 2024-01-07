@@ -1,29 +1,22 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Modal from "./Components/Modal/Modal";
-import "./App.css"
-
+import "./App.css";
 
 function App() {
-
-  const [modal, setModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleFormToggle = () => {
-    setModal(!modal);
+    setIsModalOpen(true);
   };
 
   return (
     <div className="App">
       <h1>User Details Modal</h1>
-      <button className='btn-modal' onClick={handleFormToggle}>Open Form</button>
-
-      {modal &&
-        <div className="modal-overlay">
-          <Modal />
-        </div>
-
-      }
-
+      <button className="btn-modal" onClick={handleFormToggle}>
+        Open Form
+      </button>
+      {isModalOpen && <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 }
