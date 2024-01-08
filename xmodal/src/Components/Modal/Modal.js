@@ -62,9 +62,7 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
                         <input onChange={handlePhoneNumberChange} id='phone' name='phone' value={phone} required />
                         <label htmlFor='dob'><strong>Date of Birth:</strong></label>
                         <input onChange={(e) => setDob(e.target.value)} id='dob' name='dob' type='date' value={dob} required />
-                        <div className='submit-button'>
-                            <button type='submit' className='submit-button'>Submit</button>
-                        </div>
+                        <input type='submit' className='submit-button' />
                     </form>
                 </div>
             </div>
