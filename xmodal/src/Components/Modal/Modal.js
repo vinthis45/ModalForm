@@ -7,6 +7,30 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
     const [phone, setPhone] = useState('');
     const [dob, setDob] = useState('');
 
+    
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
+    };
+
+    const handleDobChange = (e) => {
+        setDob(e.target.value);
+    };
+
+    const handleEmailChange = (e) => {
+        const inputValue = e.target.value;
+        setEmail(inputValue);
+        if (!inputValue.includes('@')) {
+            e.target.setCustomValidity(`Please include an '@' in the email address. '${inputValue}' is missing an '@'.`);
+        } else {
+            e.target.setCustomValidity('');
+        }
+    };
+
+    const handlePhoneNumberChange = (e) => {
+        const inputVal = e.target.value;
+        setPhone(inputVal);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -26,20 +50,6 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
         setIsModalOpen(false);
     };
 
-    const handleEmailChange = (e) => {
-        const inputValue = e.target.value;
-        setEmail(inputValue);
-        if (!inputValue.includes('@')) {
-            e.target.setCustomValidity(`Please include an '@' in the email address. '${inputValue}' is missing an '@'.`);
-        } else {
-            e.target.setCustomValidity('');
-        }
-    };
-
-    const handlePhoneNumberChange = (e) => {
-        const inputVal = e.target.value;
-        setPhone(inputVal);
-    };
 
     const handleModalClick = (e) => {
         e.stopPropagation();
@@ -47,22 +57,21 @@ export default function Modal({ isModalOpen, setIsModalOpen }) {
 
     return (
         <>
-            <div className={`modal modal-overlay ${isModalOpen ? 'open' : ''}`} onClick={(e) => {
-                e.stopPropagation();
+            <div className={`modal ${isModalOpen ? 'open' : ''}`} onClick={(e) => {
                 setIsModalOpen(false)
             }}>
                 <div className="modal-content" onClick={handleModalClick}>
                     <h2>Fill details</h2>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor='username'><strong>Username:</strong></label>
-                        <input onChange={(e) => setUsername(e.target.value)} id='username' name='username' value={username} required />
+                        <input onChange={handleUsernameChange} id='username' name='username' value={username} required />
                         <label htmlFor='email'><strong>Email Address:</strong></label>
                         <input onChange={handleEmailChange} id='email' name='email' type='email' value={email} required />
                         <label htmlFor='phone'><strong>Phone Number:</strong></label>
                         <input onChange={handlePhoneNumberChange} id='phone' name='phone' value={phone} required />
                         <label htmlFor='dob'><strong>Date of Birth:</strong></label>
-                        <input onChange={(e) => setDob(e.target.value)} id='dob' name='dob' type='date' value={dob} required />
-                        <input type='submit' className={`submit-button`} />
+                        <input onChange={handleDobChange} id='dob' name='dob' type='date' value={dob} required />
+                        <button className='submit-button'>Submit</button>
                     </form>
                 </div>
             </div>
