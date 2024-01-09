@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Modal.css';
+import './User.css';
 
-export default function Modal({ isModalOpen, setIsModalOpen }) {
+export default function User({ isModalOpen, setIsModalOpen }) {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');

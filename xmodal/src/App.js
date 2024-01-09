@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import Modal from "./Components/Modal/Modal";
+import User from "./Components/Modal/User";
 import "./App.css";
 
 function App() {
@@ -13,10 +13,10 @@ function App() {
   return (
     <div className="App">
       <h1>User Details Modal</h1>
-      <button className="btn-modal" onClick={handleFormToggle}>
+      <button className="submit-button" onClick={handleFormToggle}>
         Open Form
       </button>
-      {isModalOpen && <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && <User isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 }
